@@ -1,4 +1,4 @@
-# File to return the Deep VO model.
+# File to return the Deep estimator model.
 import math
 import torch
 import torch.nn as nn
@@ -6,7 +6,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable as V
 
 
-# DeepVO model
+# Deep estimator model
 class DeepVO(nn.Module):
 
 	def __init__(self, imageWidth, imageHeight, activation = 'relu', parameterization = 'default', batchnorm = False, \
@@ -98,7 +98,7 @@ class DeepVO(nn.Module):
 		Initialize variables required for the network
 		"""
 
-		# If we're using batchnorm, do not use bias for the conv layers
+		# visual encoder
 		self.bias = not self.batchnorm
 
 		self.conv1   = nn.Conv2d(6, 64, 7, 2, 3, bias = self.bias)
@@ -154,7 +154,7 @@ class DeepVO(nn.Module):
 			self.c2 = torch.zeros(1, self.hidden_units_LSTM[1])
 
 		
-		# # Create variables for LSTM outputs and cellstates
+		# # imu encoder
 
 		# # self.LSTMOutputs = []		# ???
 		# # self.LSTMCellstates = []	# ???
