@@ -1,5 +1,5 @@
 """
-Main script: Train and test DeepVO on the KITTI odometry benchmark
+Main script: Train and test pose estimator on the KITTI odometry benchmark
 """
 
 # The following two lines are needed because, conda on Mila SLURM sets
